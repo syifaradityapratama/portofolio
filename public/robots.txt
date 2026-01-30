@@ -1,0 +1,15 @@
+# Robots.txt for Syifa Raditya Portfolio
+# https://www.robotstxt.org/
+
+User-agent: *
+Allow: /
+
+# Disallow admin panel from being indexed
+Disallow: /admin
+Disallow: /admin/*
+
+# Disallow storage/app directory
+Disallow: /storage/app/
+
+# Sitemap location (uncomment when sitemap is available)
+# Sitemap: https://your-domain.com/sitemap.xml

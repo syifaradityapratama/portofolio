@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        @apply bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100;
+        background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+    .dark body {
+        background-image: radial-gradient(#1e293b 1px, transparent 1px);
+    }
+
+    /* Autofill Fix */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #eff6ff inset !important; /* slate-50-ish but let's use white or match bg */
+        -webkit-text-fill-color: #0f172a !important; /* slate-900 */
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    .dark input:-webkit-autofill,
+    .dark input:-webkit-autofill:hover,
+    .dark input:-webkit-autofill:focus,
+    .dark input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #1e293b inset !important; /* slate-800 */
+        -webkit-text-fill-color: white !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+}

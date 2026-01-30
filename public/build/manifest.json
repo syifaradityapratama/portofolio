@@ -1,0 +1,42 @@
+{
+  "_MainLayout-F27yewL9.js": {
+    "file": "assets/MainLayout-F27yewL9.js",
+    "name": "MainLayout",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/Pages/Projects/Show.tsx": {
+    "file": "assets/Show-BB3WeE_D.js",
+    "name": "Show",
+    "src": "resources/js/Pages/Projects/Show.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_MainLayout-F27yewL9.js"
+    ]
+  },
+  "resources/js/Pages/Welcome.tsx": {
+    "file": "assets/Welcome-TpY5-wye.js",
+    "name": "Welcome",
+    "src": "resources/js/Pages/Welcome.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_MainLayout-F27yewL9.js"
+    ]
+  },
+  "resources/js/app.tsx": {
+    "file": "assets/app-Btu_A9dO.js",
+    "name": "app",
+    "src": "resources/js/app.tsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Projects/Show.tsx",
+      "resources/js/Pages/Welcome.tsx"
+    ],
+    "css": [
+      "assets/app-CZF66Vld.css"
+    ]
+  }
+}

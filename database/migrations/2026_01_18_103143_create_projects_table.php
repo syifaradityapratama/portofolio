@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('projects', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('thumbnail')->nullable(); // Foto Cover
+            $table->text('short_description'); // Buat di kartu depan
+            $table->longText('content')->nullable(); // Deskripsi lengkap (Rich Editor)
+            $table->json('tech_stack')->nullable(); // Array: Laravel, Filament, dll
+            $table->string('live_link')->nullable(); // Link InfinityFree/Web
+            $table->string('github_link')->nullable(); // Link Repo
+            $table->boolean('is_featured')->default(false); // Buat highlight di home
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('projects');
+    }
+};
