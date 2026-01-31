@@ -85,6 +85,7 @@ class HomeController extends Controller
         } catch (\Exception $e) {
             // Log error tapi jangan bikin user error
             \Illuminate\Support\Facades\Log::error('Gagal kirim email: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Gagal kirim email: ' . $e->getMessage());
         }
 
         // 4. Balikin ke halaman depan + kasih notifikasi
