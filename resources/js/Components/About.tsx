@@ -62,7 +62,7 @@ export default function About({
                         <Lanyard
                             name={about.name}
                             role={about.role}
-                            image={about.image ? `/${about.image}` : '/images/profile.png'}
+                            image={about.image ? (about.image.startsWith('http') || about.image.startsWith('/') ? about.image : `/${about.image}`) : '/images/profile.png'}
                             className="z-10"
                         />
                     </motion.div>

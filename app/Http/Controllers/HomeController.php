@@ -15,9 +15,15 @@ class HomeController extends Controller
 
         // Ambil Project dari Database (yang nanti lu isi di Admin Panel)
         $projects = Project::with('category')
-            ->where('is_featured', '=', true, 'and') // Cuma tampilkan yang di-highlight
+            ->where('is_featured', true)
             ->latest()
-            ->get();
+            ->get()
+            ->map(function ($project) {
+                if ($project->thumbnail && !str_starts_with($project->thumbnail, 'http')) {
+                    $project->thumbnail = \Illuminate\Support\Facades\Storage::url($project->thumbnail);
+                }
+                return $project;
+            });
 
         // Ambil semua kategori buat filter
         $categories = Category::all();
@@ -27,7 +33,12 @@ class HomeController extends Controller
             'tech_stacks',
             3600,
             fn() =>
-            \App\Models\TechStack::all()
+            \App\Models\TechStack::all()->map(function ($stack) {
+                if ($stack->image && !str_starts_with($stack->image, 'http')) {
+                    $stack->image = \Illuminate\Support\Facades\Storage::url($stack->image);
+                }
+                return $stack;
+            })
         );
 
         // Ambil Services (cached for 1 hour)
@@ -35,7 +46,7 @@ class HomeController extends Controller
             'active_services',
             3600,
             fn() =>
-            \App\Models\Service::where('is_active', '=', true, 'and')->get()
+            \App\Models\Service::where('is_active', true)->get()
         );
 
         // Ambil Experience (cached for 1 hour)
@@ -51,7 +62,12 @@ class HomeController extends Controller
             'certificates',
             3600,
             fn() =>
-            \App\Models\Certificate::orderBy('sort_order', 'asc')->get()
+            \App\Models\Certificate::orderBy('sort_order', 'asc')->get()->map(function ($cert) {
+                if ($cert->image && !str_starts_with($cert->image, 'http')) {
+                    $cert->image = \Illuminate\Support\Facades\Storage::url($cert->image);
+                }
+                return $cert;
+            })
         );
 
         return \Inertia\Inertia::render('Welcome', compact('projects', 'categories', 'techStacks', 'services', 'experiences', 'certificates'));
@@ -60,6 +76,17 @@ class HomeController extends Controller
     public function show(Project $project)
     {
         $project->load(['category', 'techStacks']);
+
+        if ($project->thumbnail && !str_starts_with($project->thumbnail, 'http')) {
+            $project->thumbnail = \Illuminate\Support\Facades\Storage::url($project->thumbnail);
+        }
+
+        $project->techStacks->each(function ($stack) {
+            if ($stack->image && !str_starts_with($stack->image, 'http')) {
+                $stack->image = \Illuminate\Support\Facades\Storage::url($stack->image);
+            }
+        });
+
         // about is handled by middleware
         return \Inertia\Inertia::render('Projects/Show', compact('project'));
     }
