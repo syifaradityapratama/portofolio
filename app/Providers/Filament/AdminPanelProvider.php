@@ -30,8 +30,8 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->favicon(fn () => ($profile = \App\Models\Profile::first()) && $profile->logo ? asset('storage/' . $profile->logo) : null)
-            ->brandLogo(fn () => ($profile = \App\Models\Profile::first()) && $profile->logo ? asset('storage/' . $profile->logo) : null)
+            ->favicon(fn() => ($profile = \App\Models\Profile::first()) && $profile->logo ? \Illuminate\Support\Facades\Storage::url($profile->logo) : null)
+            ->brandLogo(fn() => ($profile = \App\Models\Profile::first()) && $profile->logo ? \Illuminate\Support\Facades\Storage::url($profile->logo) : null)
             ->brandLogoHeight('3rem')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

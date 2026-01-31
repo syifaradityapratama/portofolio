@@ -81,11 +81,11 @@ class HomeController extends Controller
         $adminEmail = \App\Models\Profile::first(['*'])->email ?? 'syifarpratama@gmail.com';
 
         try {
-            \Illuminate\Support\Facades\Mail::to($adminEmail)->send(new \App\Mail\ContactMail($validated));
+            \Illuminate\Support\Facades\Mail::to($adminEmail)->queue(new \App\Mail\ContactMail($validated));
         } catch (\Exception $e) {
             // Log error tapi jangan bikin user error
             \Illuminate\Support\Facades\Log::error('Gagal kirim email: ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Gagal kirim email: ' . $e->getMessage());
+            // return redirect()->back()->with('error', 'Gagal kirim email: ' . $e->getMessage()); // Debug mode off
         }
 
         // 4. Balikin ke halaman depan + kasih notifikasi

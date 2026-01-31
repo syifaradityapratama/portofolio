@@ -29,9 +29,19 @@ export default function Contact({ about }: { about: AboutProps }) {
         });
 
     // Reset form on success
+    // Custom success state for longer visibility
+    const [showSuccess, setShowSuccess] = import('react').then((r) => r.useState(false));
+
     useEffect(() => {
         if (recentlySuccessful) {
-            reset();
+            // @ts-ignore
+            setShowSuccess(true);
+            const timer = setTimeout(() => {
+                // @ts-ignore
+                setShowSuccess(false);
+                reset();
+            }, 5000); // 5 seconds visibility
+            return () => clearTimeout(timer);
         }
     }, [recentlySuccessful, reset]);
 
@@ -105,7 +115,8 @@ export default function Contact({ about }: { about: AboutProps }) {
                     <div className="relative bg-white p-10 md:w-3/5 md:p-12 dark:bg-slate-900">
                         {/* Success Notification */}
                         <AnimatePresence>
-                            {recentlySuccessful && (
+                            {/* @ts-ignore */}
+                            {showSuccess && (
                                 <motion.div
                                     initial={{ opacity: 0, y: -20, height: 0 }}
                                     animate={{ opacity: 1, y: 0, height: 'auto' }}
