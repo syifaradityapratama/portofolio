@@ -77,9 +77,9 @@ class HandleInertiaRequests extends Middleware
             'instagram' => $profile->instagram,
             'is_open_to_work' => $profile->is_open_to_work,
             // Jika user upload foto di admin, pakai itu. Kalau gak, pakai default.
-            'image' => $profile->image ? 'storage/' . $profile->image : 'images/profile.png',
-            'logo' => $profile->logo ? 'storage/' . $profile->logo : null,
-            'resume' => $profile->resume ? 'storage/' . $profile->resume : null,
+            'image' => $profile->image ? \Illuminate\Support\Facades\Storage::url($profile->image) : 'images/profile.png',
+            'logo' => $profile->logo ? \Illuminate\Support\Facades\Storage::url($profile->logo) : null,
+            'resume' => $profile->resume ? \Illuminate\Support\Facades\Storage::url($profile->resume) : null,
         ];
     }
 }
