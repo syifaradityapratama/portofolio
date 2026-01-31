@@ -47,22 +47,37 @@ export function LetterHover({
 
 export function WordHover({ text, className = '' }: { text: string; className?: string }) {
     const safeText = text || '';
-    const words = safeText.split(' ');
+    // Split by newlines first to preserve paragraphs
+    const lines = safeText.split('\n');
+
+    let wordIndex = 0;
 
     return (
         <span className={`${className} block`}>
-            {words.map((word, i) => (
-                <motion.span
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.03 }}
-                    className="mr-1.5 inline-block cursor-default transition-all duration-200 hover:scale-105 hover:font-bold hover:text-slate-800 dark:hover:text-slate-200"
-                >
-                    {word}
-                </motion.span>
-            ))}
+            {lines.map((line, lineIndex) => {
+                const words = line.split(' ').filter((w) => w.length > 0);
+                const lineContent = words.map((word) => {
+                    const currentIndex = wordIndex++;
+                    return (
+                        <motion.span
+                            key={currentIndex}
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: currentIndex * 0.02 }}
+                            className="mr-1.5 inline-block cursor-default transition-all duration-200 hover:scale-105 hover:font-bold hover:text-slate-800 dark:hover:text-slate-200"
+                        >
+                            {word}
+                        </motion.span>
+                    );
+                });
+
+                return (
+                    <span key={lineIndex} className="block mb-4 last:mb-0">
+                        {lineContent.length > 0 ? lineContent : <br />}
+                    </span>
+                );
+            })}
         </span>
     );
 }

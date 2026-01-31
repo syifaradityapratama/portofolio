@@ -5,6 +5,10 @@
 
     RewriteEngine On
 
+    # Storage proxy untuk hosting tanpa symlink (InfinityFree)
+    RewriteCond %{REQUEST_URI} ^/storage/(.*)$
+    RewriteRule ^storage/(.*)$ storage.php?file=$1 [L,QSA]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

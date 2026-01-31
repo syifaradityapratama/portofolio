@@ -1,33 +1,33 @@
 {
-  "_MainLayout-F27yewL9.js": {
-    "file": "assets/MainLayout-F27yewL9.js",
+  "_MainLayout-DXWKXbQn.js": {
+    "file": "assets/MainLayout-DXWKXbQn.js",
     "name": "MainLayout",
     "imports": [
       "resources/js/app.tsx"
     ]
   },
   "resources/js/Pages/Projects/Show.tsx": {
-    "file": "assets/Show-BB3WeE_D.js",
+    "file": "assets/Show-BnjJCA5e.js",
     "name": "Show",
     "src": "resources/js/Pages/Projects/Show.tsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.tsx",
-      "_MainLayout-F27yewL9.js"
+      "_MainLayout-DXWKXbQn.js"
     ]
   },
   "resources/js/Pages/Welcome.tsx": {
-    "file": "assets/Welcome-TpY5-wye.js",
+    "file": "assets/Welcome-CJrFq-qX.js",
     "name": "Welcome",
     "src": "resources/js/Pages/Welcome.tsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.tsx",
-      "_MainLayout-F27yewL9.js"
+      "_MainLayout-DXWKXbQn.js"
     ]
   },
   "resources/js/app.tsx": {
-    "file": "assets/app-Btu_A9dO.js",
+    "file": "assets/app-BqHIH4Ey.js",
     "name": "app",
     "src": "resources/js/app.tsx",
     "isEntry": true,
@@ -36,7 +36,7 @@
       "resources/js/Pages/Welcome.tsx"
     ],
     "css": [
-      "assets/app-CZF66Vld.css"
+      "assets/app-CZNM96uX.css"
     ]
   }
 }
