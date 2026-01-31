@@ -8,9 +8,9 @@
             $profile = \App\Models\Profile::first();
             $siteName = $profile?->name ?? config('app.name', 'Syifa Raditya');
             $siteDescription = $profile?->bio ?? 'Full-Stack Developer specializing in Laravel, React, and modern web technologies. View my portfolio and projects.';
-            $siteImage = $profile?->image ? asset('storage/' . $profile->image) : asset('images/profile.png');
+            $siteImage = $profile?->image ? \Illuminate\Support\Facades\Storage::url($profile->image) : asset('images/profile.png');
             $gaId = $profile?->google_analytics_id;
-            $faviconUrl = $profile?->logo ? asset('storage/' . $profile->logo) . '?v=' . time() : asset('favicon.ico');
+            $faviconUrl = $profile?->logo ? \Illuminate\Support\Facades\Storage::url($profile->logo) . '?v=' . time() : asset('favicon.ico');
         @endphp
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
