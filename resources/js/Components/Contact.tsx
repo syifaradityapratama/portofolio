@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle, Smartphone } from 'lucide-react';
 import { useForm } from '@inertiajs/react';
@@ -28,10 +28,10 @@ export default function Contact({ about }: { about: AboutProps }) {
             message: '',
         });
 
-    // Reset form on success
     // Custom success state for longer visibility
-    const [showSuccess, setShowSuccess] = import('react').then((r) => r.useState(false));
+    const [showSuccess, setShowSuccess] = useState(false);
 
+    // Reset form on success
     useEffect(() => {
         if (recentlySuccessful) {
             // @ts-ignore
