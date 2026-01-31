@@ -15,7 +15,8 @@ RUN apk add --no-cache \
     oniguruma-dev \
     libxml2-dev \
     icu-dev \
-    sqlite
+    sqlite \
+    sqlite-dev
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
