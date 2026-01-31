@@ -7,7 +7,7 @@ interface HeroProps {
     about: {
         name?: string;
         role?: string;
-        desc: string;
+        short_desc: string;
         is_open_to_work?: boolean;
         resume?: string;
         [key: string]: unknown;
@@ -50,7 +50,7 @@ export default function Hero({ about }: HeroProps) {
                     </h1>
 
                     <div className="mx-auto max-w-2xl text-lg leading-relaxed text-slate-400">
-                        <FadeInText text={about.desc} />
+                        <FadeInText text={about.short_desc} />
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-4">

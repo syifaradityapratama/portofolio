@@ -10,6 +10,7 @@ class Profile extends Model
         'name',
         'role',
         'bio',
+        'about_me',
         'is_open_to_work',
         'image',
         'logo',
@@ -19,5 +20,6 @@ class Profile extends Model
         'whatsapp',
         'instagram',
         'email',
+        'google_analytics_id',
     ];
 }

@@ -5,7 +5,13 @@ import { useForm } from '@inertiajs/react';
 import { FadeInText } from './TextHighlight';
 
 interface AboutProps {
+    email: string;
+    phone?: string;
     whatsapp?: string;
+    instagram?: string;
+    linkedin?: string;
+    github?: string;
+    [key: string]: unknown;
 }
 
 export default function Contact({ about }: { about: AboutProps }) {

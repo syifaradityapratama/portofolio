@@ -3,9 +3,16 @@ import { useEffect, useRef, useState } from 'react';
 interface LanyardProps {
     className?: string;
     image?: string;
+    name?: string;
+    role?: string;
 }
 
-export default function Lanyard({ className = '', image }: LanyardProps) {
+export default function Lanyard({
+    className = '',
+    image,
+    name = 'Your Name',
+    role = 'Your Role',
+}: LanyardProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
@@ -273,15 +280,23 @@ export default function Lanyard({ className = '', image }: LanyardProps) {
                 }
                 ctx.restore();
 
-                // Name Text
+                // Name Text - with truncation for long names
                 ctx.fillStyle = '#1e293b'; // Slate-800
-                ctx.font = 'bold 20px "Outfit", sans-serif'; // Assuming font availability or fallback
                 ctx.textAlign = 'center';
-                ctx.fillText('Syifa Raditya', 0, 170);
+
+                // Measure and adjust font size if name is too long
+                let fontSize = 18;
+                ctx.font = `bold ${fontSize}px "Outfit", sans-serif`;
+                const maxWidth = cardW - 20; // Leave 10px padding on each side
+                while (ctx.measureText(name).width > maxWidth && fontSize > 10) {
+                    fontSize -= 1;
+                    ctx.font = `bold ${fontSize}px "Outfit", sans-serif`;
+                }
+                ctx.fillText(name, 0, 170);
 
                 ctx.fillStyle = '#64748b'; // Slate-500
-                ctx.font = '500 14px "Outfit", sans-serif';
-                ctx.fillText('Full Stack Developer', 0, 190);
+                ctx.font = '500 12px "Outfit", sans-serif';
+                ctx.fillText(role, 0, 188);
 
                 // Footer / Barcode decoration
                 ctx.fillStyle = '#000';
@@ -311,7 +326,7 @@ export default function Lanyard({ className = '', image }: LanyardProps) {
             window.removeEventListener('mouseup', handleMouseUp);
             cancelAnimationFrame(animationFrameId);
         };
-    }, [image, isHovered]);
+    }, [image, isHovered, name, role]);
 
     return (
         <div

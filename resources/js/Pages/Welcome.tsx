@@ -12,11 +12,17 @@ import Experience from '@/Components/Experience';
 
 interface WelcomeProps {
     about: {
+        name: string;
+        role: string;
         image?: string;
-        desc: string;
+        short_desc: string;
+        long_desc: string;
         linkedin?: string;
         github?: string;
         logo?: string;
+        whatsapp?: string;
+        instagram?: string;
+        email: string;
     };
     techStacks: Array<{
         name: string;
@@ -24,14 +30,16 @@ interface WelcomeProps {
         url?: string;
     }>;
     services: Array<{ id: number; title: string; description: string; icon: string }>;
-    experiences: Array<{
-        id: number;
-        company: string;
-        role: string;
-        period: string;
-        description: string;
-        type: string;
-    }>;
+    experiences: {
+        [key: string]: Array<{
+            id: number;
+            company: string;
+            title: string;
+            period: string;
+            description: string;
+            type: string;
+        }>;
+    };
     projects: Array<{
         id: number;
         title: string;

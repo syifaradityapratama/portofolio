@@ -56,7 +56,8 @@ class HandleInertiaRequests extends Middleware
             return [
                 'name' => 'Syifa Raditya Pratama',
                 'role' => 'Full-Stack Developer',
-                'desc' => 'Profile belum diisi di Admin Panel.',
+                'short_desc' => 'Profile belum diisi di Admin Panel.',
+                'long_desc' => 'Deskripsi lengkap belum diisi.',
                 'email' => 'admin@example.com',
                 'linkedin' => '#',
                 'github' => '#',
@@ -67,7 +68,8 @@ class HandleInertiaRequests extends Middleware
         return [
             'name' => $profile->name,
             'role' => $profile->role,
-            'desc' => $profile->bio,
+            'short_desc' => $profile->bio,
+            'long_desc' => $profile->about_me ?? $profile->bio, // Fallback to bio if empty
             'email' => $profile->email,
             'linkedin' => $profile->linkedin,
             'github' => $profile->github,

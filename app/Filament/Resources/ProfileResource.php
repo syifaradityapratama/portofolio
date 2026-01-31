@@ -39,10 +39,17 @@ class ProfileResource extends Resource
                             ->required(),
                     ])->columns(2),
 
-                Forms\Components\Section::make('Bio')
+                Forms\Components\Section::make('Bio & Description')
                     ->schema([
                         Forms\Components\Textarea::make('bio')
+                            ->label('Short Bio (Hero Section)')
+                            ->helperText('Appears under your name in the dashboard home page.')
                             ->required()
+                            ->maxLength(65535)
+                            ->columnSpanFull(),
+                        Forms\Components\Textarea::make('about_me')
+                            ->label('About Me Description')
+                            ->helperText('Appears in the About Me section next to your photo.')
                             ->maxLength(65535)
                             ->columnSpanFull(),
                     ]),

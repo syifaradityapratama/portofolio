@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Middleware to add security headers to all HTTP responses.
- * 
+ *
  * Headers added:
  * - X-Content-Type-Options: Prevents MIME-sniffing attacks
  * - X-Frame-Options: Prevents clickjacking attacks
@@ -60,11 +60,11 @@ class SecurityHeadersMiddleware
     {
         $policies = [
             "default-src 'self'",
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval'", // Required for Vite HMR in dev
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com", // Required for Vite HMR in dev + Google Analytics
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com data:",
             "img-src 'self' data: blob: https:",
-            "connect-src 'self' ws: wss: https://api.lanyard.rest", // WebSocket for Vite HMR + Lanyard
+            "connect-src 'self' ws: wss: https://api.lanyard.rest *.google-analytics.com", // WebSocket for Vite HMR + Lanyard + Google Analytics
             "frame-ancestors 'none'",
             "base-uri 'self'",
             "form-action 'self'",
