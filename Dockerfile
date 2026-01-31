@@ -56,11 +56,14 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 # Create sqlite database for fallback
 RUN mkdir -p /var/www/html/database && touch /var/www/html/database/database.sqlite
 
+# DO NOT cache config during build - env vars are not available yet!
+# Config will be cached at runtime
+
 # Expose port
 EXPOSE 8080
 
-# Create startup script with bash
-RUN printf '#!/bin/bash\nset -e\necho "Starting Laravel application..."\nphp artisan storage:link 2>/dev/null || echo "Storage link already exists or failed"\nphp artisan migrate --force 2>/dev/null || echo "Migration skipped"\nphp artisan config:cache 2>/dev/null || true\necho "Starting server on port ${PORT:-8080}"\nexec php artisan serve --host=0.0.0.0 --port=${PORT:-8080}\n' > /start.sh && chmod +x /start.sh
+# Create startup script
+RUN printf '#!/bin/bash\nset -e\necho "Starting Laravel application..."\nphp artisan storage:link 2>/dev/null || echo "Storage link exists"\nphp artisan migrate --force || echo "Migration skipped"\nphp artisan config:clear\nphp artisan route:clear\nphp artisan view:clear\necho "Starting server on port ${PORT:-8080}"\nexec php artisan serve --host=0.0.0.0 --port=${PORT:-8080}\n' > /start.sh && chmod +x /start.sh
 
 # Start command
 CMD ["/bin/bash", "/start.sh"]
