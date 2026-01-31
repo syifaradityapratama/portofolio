@@ -65,7 +65,7 @@ export default function ProjectCard({ project }: ProjectProps) {
                         project.thumbnail
                             ? project.thumbnail.startsWith('http')
                                 ? project.thumbnail
-                                : `/storage/${project.thumbnail}`
+                                : `${project.thumbnail}`
                             : '/images/placeholder.jpg'
                     }
                     alt={project.title}

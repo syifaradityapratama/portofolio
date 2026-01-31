@@ -16,11 +16,11 @@ export default function MainLayout({ children }: { children: ReactNode }) {
         if (about?.logo) {
             const link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
             if (link) {
-                link.href = `/storage/${about.logo}`;
+                link.href = `${about.logo}`;
             } else {
                 const newLink = document.createElement('link');
                 newLink.rel = 'icon';
-                newLink.href = `/storage/${about.logo}`;
+                newLink.href = `${about.logo}`;
                 document.head.appendChild(newLink);
             }
         }

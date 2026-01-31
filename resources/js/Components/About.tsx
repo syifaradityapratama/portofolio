@@ -139,7 +139,7 @@ export default function About({
                                                             src={
                                                                 stack.image.startsWith('http')
                                                                     ? stack.image
-                                                                    : `/storage/${stack.image}`
+                                                                    : `${stack.image}`
                                                             }
                                                             alt={stack.name}
                                                             className="h-full w-full object-contain"

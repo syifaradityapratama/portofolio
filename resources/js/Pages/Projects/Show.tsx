@@ -17,7 +17,7 @@ interface Project {
 }
 
 export default function Show({ project }: { project: Project }) {
-    const getImageUrl = (path: string) => (path.startsWith('http') ? path : `/storage/${path}`);
+    const getImageUrl = (path: string) => (path.startsWith('http') ? path : `${path}`);
 
     return (
         <>

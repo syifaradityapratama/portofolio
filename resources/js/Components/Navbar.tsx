@@ -61,7 +61,7 @@ export default function Navbar() {
                         {/* Use global prop if available */}
                         {about?.logo && !logoError ? (
                             <img
-                                src={`/storage/${about.logo}`}
+                                src={`${about.logo}` || '/images/logo.png'}
                                 alt="Logo"
                                 className="h-10 w-auto object-contain"
                                 onError={() => setLogoError(true)}
