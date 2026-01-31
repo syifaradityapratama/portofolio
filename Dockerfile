@@ -63,7 +63,7 @@ RUN mkdir -p /var/www/html/database && touch /var/www/html/database/database.sql
 EXPOSE 8080
 
 # Create startup script
-RUN printf '#!/bin/bash\nset -e\necho "Starting Laravel application..."\nphp artisan storage:link 2>/dev/null || echo "Storage link exists"\nphp artisan migrate --force || echo "Migration skipped"\nphp artisan config:clear\nphp artisan route:clear\nphp artisan view:clear\necho "Starting server on port ${PORT:-8080}"\nexec php artisan serve --host=0.0.0.0 --port=${PORT:-8080}\n' > /start.sh && chmod +x /start.sh
+RUN printf '#!/bin/bash\nset -e\necho "Starting Laravel application..."\nphp artisan storage:link 2>/dev/null || echo "Storage link exists"\nphp artisan migrate --force || echo "Migration skipped"\nphp artisan config:clear\nphp artisan route:clear\nphp artisan view:clear\nphp artisan filament:upgrade --force\necho "Starting server on port ${PORT:-8080}"\nexec php artisan serve --host=0.0.0.0 --port=${PORT:-8080}\n' > /start.sh && chmod +x /start.sh
 
 # Start command
 CMD ["/bin/bash", "/start.sh"]
