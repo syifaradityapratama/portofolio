@@ -17,7 +17,11 @@ interface Project {
 }
 
 export default function Show({ project }: { project: Project }) {
-    const getImageUrl = (path: string) => (path.startsWith('http') ? path : `${path}`);
+    const getImageUrl = (path: string) => {
+        if (!path) return '';
+        if (path.startsWith('http') || path.startsWith('/')) return path;
+        return `/${path}`;
+    };
 
     return (
         <>

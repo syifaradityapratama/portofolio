@@ -31,7 +31,8 @@ class TechStackResource extends Resource
                     ->imageCropAspectRatio('1:1')
                     ->imageResizeTargetWidth('100')
                     ->imageResizeTargetHeight('100')
-                    ->directory('tech-stacks'),
+                    ->directory('tech-stacks')
+                    ->disk('public'),
                 Forms\Components\TextInput::make('url')
                     ->url()
                     ->label('Documentation URL')
@@ -43,7 +44,8 @@ class TechStackResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->disk('public'),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('url')

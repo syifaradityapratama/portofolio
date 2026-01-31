@@ -48,6 +48,7 @@ class CertificateResource extends Resource
                             ->imageResizeTargetWidth('800')
                             ->imageResizeTargetHeight('600')
                             ->directory('certificates')
+                            ->disk('public')
                             ->label('Certificate Image (Optional)'),
                         Forms\Components\Toggle::make('is_featured')
                             ->label('Feature on Homepage')
@@ -63,7 +64,8 @@ class CertificateResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->disk('public'),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),

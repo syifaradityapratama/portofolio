@@ -64,15 +64,18 @@ class ProfileResource extends Resource
                             ->imageResizeTargetWidth('500')
                             ->imageResizeTargetHeight('500')
                             ->directory('profile')
+                            ->disk('public')
                             ->label('Profile Photo'),
                         Forms\Components\FileUpload::make('logo')
                             ->image()
                             ->imageEditor()
                             ->directory('profile')
+                            ->disk('public')
                             ->label('Site Logo (Optional)'),
                         Forms\Components\FileUpload::make('resume')
                             ->acceptedFileTypes(['application/pdf'])
                             ->directory('profile')
+                            ->disk('public')
                             ->label('Resume (PDF)'),
                     ]),
 
@@ -100,7 +103,8 @@ class ProfileResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->disk('public'),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('role')

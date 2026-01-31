@@ -49,7 +49,7 @@ export default function Certificates({ certificates }: { certificates: Certifica
                                 <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800">
                                     {cert.image ? (
                                         <img
-                                            src={`${cert.image}` || ''}
+                                            src={cert.image.startsWith('http') || cert.image.startsWith('/') ? cert.image : `/${cert.image}`}
                                             alt={cert.name}
                                             className="h-full w-full object-cover"
                                         />

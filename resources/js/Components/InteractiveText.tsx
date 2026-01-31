@@ -73,8 +73,8 @@ export function WordHover({ text, className = '' }: { text: string; className?: 
                 });
 
                 return (
-                    <span key={lineIndex} className="block mb-4 last:mb-0">
-                        {lineContent.length > 0 ? lineContent : <br />}
+                    <span key={lineIndex} className="block mb-2 last:mb-0">
+                        {lineContent.length > 0 ? lineContent : <div className="h-4" />}
                     </span>
                 );
             })}

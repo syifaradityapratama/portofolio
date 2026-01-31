@@ -59,6 +59,7 @@ class ProjectResource extends Resource
                                     ->imageResizeTargetWidth('1920')
                                     ->imageResizeTargetHeight('1080')
                                     ->directory('projects')
+                                    ->disk('public')
                                     ->required(),
 
                                 Forms\Components\Toggle::make('is_featured')
@@ -102,6 +103,7 @@ class ProjectResource extends Resource
                             ->reorderable()
                             ->panelLayout('grid')
                             ->directory('projects/gallery')
+                            ->disk('public')
                             ->hiddenLabel(),
                     ])->columnSpanFull(),
             ])->columns(3);
@@ -111,7 +113,8 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('thumbnail'),
+                Tables\Columns\ImageColumn::make('thumbnail')
+                    ->disk('public'),
                 Tables\Columns\TextColumn::make('title')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('category.name')->sortable(),
                 Tables\Columns\TextColumn::make('techStacks.name')->badge()->separator(','),

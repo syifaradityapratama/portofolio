@@ -19,3 +19,4 @@ yarn-error.log
 tests
 phpunit.xml
 .editorconfig
+public/storage
