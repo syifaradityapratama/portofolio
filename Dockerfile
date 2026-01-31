@@ -16,7 +16,8 @@ RUN apk add --no-cache \
     libxml2-dev \
     icu-dev \
     sqlite \
-    sqlite-dev
+    sqlite-dev \
+    bash
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
@@ -52,25 +53,14 @@ RUN npm ci && npm run build
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Create sqlite database for fallback if no MySQL
-RUN touch /var/www/html/database/database.sqlite
-
-# Cache Laravel config (skip if env not set)
-RUN php artisan config:clear || true
-RUN php artisan route:cache || true
-RUN php artisan view:cache || true
+# Create sqlite database for fallback
+RUN mkdir -p /var/www/html/database && touch /var/www/html/database/database.sqlite
 
 # Expose port
 EXPOSE 8080
 
-# Create startup script
-RUN echo '#!/bin/sh' > /start.sh && \
-    echo 'set -e' >> /start.sh && \
-    echo 'php artisan storage:link || true' >> /start.sh && \
-    echo 'php artisan migrate --force || echo "Migration skipped - database not configured"' >> /start.sh && \
-    echo 'php artisan config:cache || true' >> /start.sh && \
-    echo 'exec php artisan serve --host=0.0.0.0 --port=${PORT:-8080}' >> /start.sh && \
-    chmod +x /start.sh
+# Create startup script with bash
+RUN printf '#!/bin/bash\nset -e\necho "Starting Laravel application..."\nphp artisan storage:link 2>/dev/null || echo "Storage link already exists or failed"\nphp artisan migrate --force 2>/dev/null || echo "Migration skipped"\nphp artisan config:cache 2>/dev/null || true\necho "Starting server on port ${PORT:-8080}"\nexec php artisan serve --host=0.0.0.0 --port=${PORT:-8080}\n' > /start.sh && chmod +x /start.sh
 
 # Start command
-CMD ["/start.sh"]
+CMD ["/bin/bash", "/start.sh"]
