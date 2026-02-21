@@ -91,11 +91,11 @@ export default async function ProjectPage({
   }
 
   return (
-    <main className="min-h-screen bg-black pt-24 pb-24">
+    <main className="min-h-screen bg-black pt-20 md:pt-24 pb-24">
       <ScrollToTop />
 
       {/* Back to Projects — always visible, above hero */}
-      <div className="container mx-auto px-6 mb-6">
+      <div className="container mx-auto px-6 mb-4">
         <Link 
           href="/#projects" 
           className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group"
