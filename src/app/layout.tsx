@@ -52,6 +52,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
