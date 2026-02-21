@@ -91,7 +91,7 @@ export default async function ProjectPage({
   }
 
   return (
-    <main className="min-h-screen bg-black pt-2 md:pt-24 pb-24">
+    <main className="min-h-screen bg-black pt-4 md:pt-8 pb-24">
       <ScrollToTop />
 
       {/* Back to Projects — always visible, above hero */}
