@@ -1,7 +1,21 @@
 'use client'
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useSyncExternalStore } from "react"
 import { motion, useMotionValue, useSpring, MotionValue } from "framer-motion"
+
+// Detect touch devices (phones, tablets) — returns true if no fine pointer
+function useIsTouchDevice(): boolean {
+  return useSyncExternalStore(
+    (cb) => {
+      const mql = window.matchMedia('(pointer: coarse)')
+      mql.addEventListener('change', cb)
+      return () => mql.removeEventListener('change', cb)
+    },
+    () => window.matchMedia('(pointer: coarse)').matches,
+    () => false
+  )
+}
+
 
 // 1. Rainbow Tail + Satellite Component (Combined for Sync)
 const RainbowOrbitSystem = ({ 
@@ -103,6 +117,7 @@ const RainbowOrbitSystem = ({
 }
 
 export default function CustomCursor() {
+  const isTouchDevice = useIsTouchDevice()
   const [isHovered, setIsHovered] = useState(false)
 
   // 1. Mouse Values
@@ -116,6 +131,8 @@ export default function CustomCursor() {
   const satCenterY = useSpring(mouseY, springConfigMain)
 
   useEffect(() => {
+    if (isTouchDevice) return // Skip all mouse handling on touch devices
+
     const moveCursor = (e: MouseEvent) => {
       mouseX.set(e.clientX)
       mouseY.set(e.clientY)
@@ -146,8 +163,11 @@ export default function CustomCursor() {
         window.removeEventListener("mouseover", handleMouseOver)
         document.body.style.cursor = 'auto'
       }
-    }, [mouseX, mouseY])
+    }, [mouseX, mouseY, isTouchDevice])
   
+    // Touch devices (mobile/tablet) don't need a custom cursor
+    if (isTouchDevice) return null
+
     return (
       <>
         <div className="fixed inset-0 pointer-events-none z-9999 overflow-hidden">
