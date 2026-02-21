@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://radityaportofolio.is-a.dev"),
-  title: "Syifa Raditya Pratama | Full Stack Developer & Digital Strategist",
+  title: "Syifa Raditya Pratama | Full Stack Developer",
   description: "Portfolio of Syifa Raditya Pratama, a Full Stack Developer specializing in Laravel, Next.js, and Enterprise Systems. Experienced in Digital Transformation at PT LEN Industri.",
   keywords: ["Syifa Raditya Pratama", "Web Developer Bandung", "Laravel Developer", "Next.js Portfolio", "Software Engineer Indonesia", "Full Stack Developer"],
   openGraph: {
