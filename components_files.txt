@@ -1,0 +1,29 @@
+﻿
+
+    Directory: C:\laragon\www\portofolio\src\components
+
+
+Mode                 LastWriteTime         Length Name      
+----                 -------------         ------ ----      
+d-----          2/7/2026   4:16 PM                ui        
+-a----          2/5/2026  10:51 PM            640 BentoGrid.
+                                                  tsx       
+-a----          2/7/2026   2:02 PM           1305 BrandIcon.
+                                                  tsx       
+-a----          2/6/2026  12:52 AM           3780 ContactBut
+                                                  ton.tsx   
+-a----          2/6/2026   7:22 PM           4834 Experience
+                                                  .tsx      
+-a----          2/7/2026   4:24 PM            755 GodModeWra
+                                                  pper.tsx  
+-a----          2/6/2026   7:23 PM           3163 Hero.tsx  
+-a----          2/7/2026   5:12 PM           3573 Navbar.tsx
+-a----          2/7/2026   3:14 PM           4345 Preloader.
+                                                  tsx       
+-a----          2/7/2026   2:13 PM           2838 ProjectCar
+                                                  d.tsx     
+-a----          2/6/2026   7:24 PM            719 SkillCard.
+                                                  tsx       
+-a----          2/6/2026   7:02 PM           1790 Skills.tsx
+
+
