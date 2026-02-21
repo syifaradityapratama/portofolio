@@ -22,25 +22,36 @@ async function getProfileData() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  
   const profile = await getProfileData();
 
-  const title = profile?.fullName ? `${profile.fullName} | Portfolio` : 'Portfolio';
-  const description = profile?.headline || 'Full Stack Developer';
+  const title = profile?.fullName ? `${profile.fullName} | Portfolio` : 'Syifa Raditya Pratama | Portfolio';
+  const description = profile?.headline || 'Building high-performance web applications and digital solutions.';
 
   return {
+    metadataBase: new URL("https://radityaportofolio.is-a.dev"),
     title,
     description,
+    keywords: ["Syifa Raditya Pratama", "Web Developer Bandung", "Laravel Developer", "Next.js Portfolio", "Software Engineer Indonesia", "Full Stack Developer"],
     openGraph: {
       title,
       description,
-      images: profile?.imageUrl ? [profile.imageUrl] : [],
+      url: "https://radityaportofolio.is-a.dev",
+      siteName: "Syifa Raditya Portfolio",
+      images: [
+        {
+          url: "/icon.png",
+          width: 512,
+          height: 512,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: profile?.imageUrl ? [profile.imageUrl] : [],
+      images: ["/icon.png"],
     },
   };
 }
