@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/studio/', // Hide Sanity Studio from search results
     },
-    sitemap: 'https://syifaraditya.com/sitemap.xml', // Adjust if you have a different domain
+    sitemap: 'https://radityaportofolio.is-a.dev/sitemap.xml',
   }
 }

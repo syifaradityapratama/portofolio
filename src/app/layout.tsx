@@ -23,20 +23,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://syifaraditya.com"),
+  metadataBase: new URL("https://radityaportofolio.is-a.dev"),
   title: "Syifa Raditya Pratama | Full Stack Developer & Digital Strategist",
   description: "Portfolio of Syifa Raditya Pratama, a Full Stack Developer specializing in Laravel, Next.js, and Enterprise Systems. Experienced in Digital Transformation at PT LEN Industri.",
-  keywords: ["Syifa Raditya Pratama", "Web Developer Bandung", "Laravel Developer", "Next.js Portfolio", "PT LEN Industri Magang"],
+  keywords: ["Syifa Raditya Pratama", "Web Developer Bandung", "Laravel Developer", "Next.js Portfolio", "Software Engineer Indonesia", "Full Stack Developer"],
   openGraph: {
     title: "Syifa Raditya Pratama | Portfolio",
     description: "Building high-performance web applications and digital solutions.",
-    url: "https://syifaraditya.com",
+    url: "https://radityaportofolio.is-a.dev",
     siteName: "Syifa Raditya Portfolio",
     images: [
       {
-        url: "/next.svg", // TODO: Replace with personal OG image (Technical Debt)
-        width: 1200,
-        height: 630,
+        url: "/icon.png",
+        width: 512,
+        height: 512,
       },
     ],
     locale: "en_US",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Syifa Raditya Pratama | Portfolio",
     description: "Building high-performance web applications and digital solutions.",
-    images: ["/next.svg"],
+    images: ["/icon.png"],
   },
   robots: {
     index: true,

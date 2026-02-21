@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { client } from '@/sanity/lib/client'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://syifaraditya.com' // Adjust to your production URL
+  const baseUrl = 'https://radityaportofolio.is-a.dev'
 
   // Fetch project slugs from Sanity
   const projects = await client.fetch<{ slug: { current: string }, _updatedAt: string }[]>(
