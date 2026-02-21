@@ -94,7 +94,7 @@ export default async function ProjectPage({
     <main className="min-h-screen bg-black pt-24 pb-24">
       <ScrollToTop />
       {/* Hero Section */}
-      <section className="relative h-[60vh] w-full overflow-hidden">
+      <section className="relative h-[45vh] md:h-[60vh] w-full overflow-hidden">
         <Image
           src={urlFor(project.mainImage).width(1920).url()}
           alt={project.title}
@@ -188,6 +188,17 @@ export default async function ProjectPage({
             </div>
           </div>
 
+        </div>
+
+        {/* Bottom back link — visible after reading content */}
+        <div className="mt-16 pt-8 border-t border-white/10 flex justify-center">
+          <Link 
+            href="/#projects" 
+            className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group text-lg"
+          >
+            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+            Back to Projects
+          </Link>
         </div>
       </section>
     </main>

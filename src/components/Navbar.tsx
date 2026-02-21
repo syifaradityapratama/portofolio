@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { smoothScrollTo } from "@/lib/utils";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { useScrollReveal } from "@/context/ScrollRevealContext";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,10 +16,18 @@ export default function Navbar() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
   const { isRevealed } = useScrollReveal();
+  const isMobile = useIsMobile(1024); // md breakpoint for tablet too
 
-  // Hide navbar on scroll down, show on scroll up
+  // Hide navbar on scroll down, show on scroll up (desktop only)
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
+    
+    // Never hide on mobile/tablet
+    if (isMobile) {
+      setHidden(false);
+      setScrolled(latest > 50);
+      return;
+    }
     
     // Only hide if scrolled past threshold
     if (latest > 100) {
