@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic'
 import { useRef } from 'react'
 import MagneticButton from './MagneticButton'
 import { useScrollReveal } from '@/context/ScrollRevealContext'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 // Dynamic imports — eliminates heavy animation JS from initial bundle
 const AnimatedGrid = dynamic(() => import('./AnimatedGrid'), { ssr: false, loading: () => null })
@@ -57,6 +58,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
   const imageContainerRef = useRef<HTMLDivElement>(null)
   const { isRevealed } = useScrollReveal()
   const prefersReducedMotion = useReducedMotion()
+  const isMobile = useIsMobile()
 
   return (
     <section className="relative min-h-dvh flex items-center px-6 lg:px-16 overflow-hidden">
@@ -76,29 +78,33 @@ export default function HeroClient({ profile }: HeroClientProps) {
         />
       </div>
       
-      {/* Particle Field - Stars (disabled for reduced motion, client-only) */}
-      {!prefersReducedMotion && <ParticleField count={40} />}
+      {/* Particle Field - Stars (desktop only, disabled for reduced motion) */}
+      {!isMobile && !prefersReducedMotion && <ParticleField count={20} />}
       
-      {/* Animated Grid Background */}
-      <AnimatedGrid />
+      {/* Animated Grid Background (desktop only) */}
+      {!isMobile && <AnimatedGrid />}
       
-      {/* Floating Decorative Elements */}
-      <FloatingElements />
+      {/* Floating Decorative Elements (desktop only) */}
+      {!isMobile && <FloatingElements />}
       
       {/* Background gradient overlay */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-blue-900/20 via-zinc-950 to-zinc-950" />
       
-      {/* Animated background orbs */}
-      <motion.div 
-        className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[150px]"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" as const }}
-      />
-      <motion.div 
-        className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-[120px]"
-        animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" as const }}
-      />
+      {/* Animated background orbs (desktop only — blur is GPU-expensive) */}
+      {!isMobile && (
+        <>
+          <motion.div 
+            className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[150px]"
+            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" as const }}
+          />
+          <motion.div 
+            className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-[120px]"
+            animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.5, 0.3] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" as const }}
+          />
+        </>
+      )}
       
       {/* Content Grid: Split Layout */}
       <div className="container mx-auto relative z-10">
@@ -115,8 +121,8 @@ export default function HeroClient({ profile }: HeroClientProps) {
               <motion.div 
                 ref={imageContainerRef}
                 className="relative"
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                animate={isMobile ? undefined : { y: [-10, 10, -10] }}
+                transition={isMobile ? undefined : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
               >
                 {/* Decorative rings with staggered animation */}
                 <motion.div 
@@ -144,8 +150,8 @@ export default function HeroClient({ profile }: HeroClientProps) {
                 {/* Glow effect behind image */}
                 <motion.div 
                   className="absolute inset-4 rounded-full bg-blue-500/20 blur-3xl"
-                  animate={{ opacity: [0.2, 0.4, 0.2], scale: [0.9, 1.05, 0.9] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" as const }}
+                  animate={isMobile ? undefined : { opacity: [0.2, 0.4, 0.2], scale: [0.9, 1.05, 0.9] }}
+                  transition={isMobile ? undefined : { duration: 4, repeat: Infinity, ease: "easeInOut" as const }}
                 />
                 
                 {/* Main image */}
