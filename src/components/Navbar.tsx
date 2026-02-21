@@ -253,16 +253,17 @@ export default function Navbar() {
               animate="visible"
               exit="exit"
             >
-              <div className="p-6 flex flex-col gap-2">
+              <div className="p-6 flex flex-col gap-2 items-center text-center">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.name}
                     variants={mobileItemVariants}
                     custom={index}
+                    className="w-full"
                   >
                     <Link 
                       href={link.href} 
-                      className="text-lg font-medium text-zinc-300 hover:text-white transition-colors p-4 rounded-xl hover:bg-white/5 block relative group"
+                      className="text-lg font-medium text-zinc-300 hover:text-white transition-colors p-4 rounded-xl hover:bg-white/5 block relative group w-full"
                       onClick={(e) => {
                         setIsOpen(false);
                         handleNavClick(e, link.href);
