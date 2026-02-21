@@ -13,7 +13,6 @@ import { useIsMobile } from '@/hooks/useIsMobile'
 // Dynamic imports — eliminates heavy animation JS from initial bundle
 const AnimatedGrid = dynamic(() => import('./AnimatedGrid'), { ssr: false, loading: () => null })
 const FloatingElements = dynamic(() => import('./FloatingElements'), { ssr: false, loading: () => null })
-const AuroraEffect = null // REMOVED: Replaced with CSS-only gradient for performance
 const ParticleField = dynamic(() => import('./ParticleField'), { ssr: false, loading: () => null })
 
 interface HeroClientProps {

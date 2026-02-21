@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SkillCard from '@/components/SkillCard'
 import { getLogoUrl } from '@/lib/utils'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 // Types
 interface Skill {
@@ -45,9 +46,9 @@ function getCategoryColor(key: string, index: number): string {
 // ── #5 FIXED Marquee Row (Seamless Infinite Scroll) ──
 // Uses margin-right instead of flex gap to ensure pixel-perfect -50% looping.
 // Uses w-max so container width = content width exactly.
-const MarqueeRow = ({ items, direction = "left" }: { items: Skill[], direction?: "left" | "right" }) => {
-    // 8x duplication ensures content is always wider than 2x viewport
-    const duplicatedItems = Array(8).fill(null).flatMap(() => items)
+const MarqueeRow = ({ items, direction = "left", isMobile = false }: { items: Skill[], direction?: "left" | "right", isMobile?: boolean }) => {
+    // Mobile: 4x duplication (enough for narrow screens), Desktop: 8x
+    const duplicatedItems = Array(isMobile ? 4 : 8).fill(null).flatMap(() => items)
 
     return (
         <div className="marquee-row flex overflow-hidden select-none py-4">
@@ -82,6 +83,7 @@ const MarqueeRow = ({ items, direction = "left" }: { items: Skill[], direction?:
 
 export default function SkillsClient({ skills }: SkillsClientProps) {
   const [activeCategory, setActiveCategory] = useState('all')
+  const isMobile = useIsMobile()
 
   // Derive categories dynamically from data
   const uniqueKeys = [...new Set(skills.map(s => s.category?.toLowerCase() || 'other'))]
@@ -142,8 +144,8 @@ export default function SkillsClient({ skills }: SkillsClientProps) {
                 <div className="absolute inset-y-0 right-0 w-24 bg-linear-to-l from-zinc-950 to-transparent z-10 pointer-events-none" />
                 
                 <div className="flex flex-col gap-6 -rotate-1 hover:rotate-0 transition-transform duration-700 origin-center">
-                    <MarqueeRow items={row1} direction="left" />
-                    <MarqueeRow items={row2} direction="right" />
+                    <MarqueeRow items={row1} direction="left" isMobile={isMobile} />
+                    <MarqueeRow items={row2} direction="right" isMobile={isMobile} />
                 </div>
              </motion.div>
         ) : activeCategory !== 'all' ? (
@@ -178,10 +180,10 @@ export default function SkillsClient({ skills }: SkillsClientProps) {
                             // #10 Bento: first 2 items span 2 columns on md+
                             className={isFeatured ? "md:col-span-2" : ""}
                         >
-                            {/* #9 Float Wrapper */}
+                            {/* #9 Float Wrapper (desktop only) */}
                             <motion.div
-                                animate={{ y: [0, -6, 0] }}
-                                transition={{
+                                animate={isMobile ? undefined : { y: [0, -6, 0] }}
+                                transition={isMobile ? undefined : {
                                     duration: floatDuration,
                                     repeat: Infinity,
                                     ease: "easeInOut",
