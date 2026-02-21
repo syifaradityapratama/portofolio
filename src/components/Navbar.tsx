@@ -129,8 +129,8 @@ export default function Navbar() {
       <motion.nav 
         className={`sticky top-0 z-50 w-full border-b transition-all duration-500 ${
           scrolled 
-            ? "border-white/10 bg-black/80 backdrop-blur-xl shadow-lg shadow-black/20" 
-            : "border-white/5 bg-black/40 backdrop-blur-md"
+            ? "border-white/10 bg-black/80 backdrop-blur-sm md:backdrop-blur-xl shadow-lg shadow-black/20" 
+            : "border-white/5 bg-black/40 backdrop-blur-sm md:backdrop-blur-md"
         }`}
         initial={{ y: 0 }}
         animate={{ y: hidden ? -100 : 0 }}
@@ -238,7 +238,7 @@ export default function Navbar() {
         <AnimatePresence>
           {isOpen && (
             <motion.div 
-              className="md:hidden absolute top-full left-0 w-full bg-zinc-950/98 border-b border-white/10 backdrop-blur-xl overflow-hidden z-50"
+              className="md:hidden absolute top-full left-0 w-full bg-zinc-950/98 border-b border-white/10 backdrop-blur-sm overflow-hidden z-50"
               variants={mobileMenuVariants}
               initial="hidden"
               animate="visible"
