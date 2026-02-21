@@ -93,8 +93,20 @@ export default async function ProjectPage({
   return (
     <main className="min-h-screen bg-black pt-24 pb-24">
       <ScrollToTop />
+
+      {/* Back to Projects — always visible, above hero */}
+      <div className="container mx-auto px-6 mb-6">
+        <Link 
+          href="/#projects" 
+          className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group"
+        >
+          <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+          Back to Projects
+        </Link>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative h-[45vh] md:h-[60vh] w-full overflow-hidden">
+      <section className="relative min-h-[40vh] md:h-[60vh] w-full overflow-hidden">
         <Image
           src={urlFor(project.mainImage).width(1920).url()}
           alt={project.title}
@@ -104,18 +116,11 @@ export default async function ProjectPage({
         />
         <div className="absolute inset-0 bg-linear-to-t from-black via-black/60 to-transparent" />
         
-        <div className="container relative mx-auto h-full px-6 flex flex-col justify-end pb-12">
-          <Link 
-            href="/#projects" 
-            className="mb-8 flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group"
-          >
-            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-            Back to Projects
-          </Link>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tighter">
+        <div className="container relative mx-auto h-full px-6 flex flex-col justify-end py-10 md:pb-12">
+          <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 tracking-tighter">
             {project.title}
           </h1>
-          <p className="max-w-2xl text-xl text-zinc-300 leading-relaxed font-medium">
+          <p className="max-w-2xl text-base md:text-xl text-zinc-300 leading-relaxed font-medium">
             {project.description}
           </p>
         </div>
