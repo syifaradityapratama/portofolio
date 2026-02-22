@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         height: 512,
       },
     ],
-    locale: "en_US",
+    locale: "id_ID",
     type: "website",
   },
   twitter: {
