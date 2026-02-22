@@ -71,8 +71,9 @@ Serverless API route (`/api/contact`) persists messages to Sanity and sends HTML
 
 To achieve a "wow" factor during link sharing, the social metadata system was upgraded from static assets to dynamic profiles.
 
-- **Dynamic OG Image**: The social sharing preview (`og:image`) now dynamically pulls the **Hero Section photo** from Sanity.
-- **SVG Transition**: Switched from PNG/Text branding to `icon.svg` for infinite scalability across the Navbar, Preloader, and favicon bundle.
+- **Dynamic OG Image**: The social sharing preview (`og:image`) now dynamically pulls the **Hero Section photo** from Sanity. If no photo is present, it falls back to the high-resolution brand icon.
+- **SVG Transition**: Switched from PNG favicons to `icon.svg` for infinite scalability and crystal-clear presentation on high-DPI displays (MacBooks, Retina iPhones).
+- **Domain Migration**: Successfully migrated to the `radityaportofolio.is-a.dev` domain via the `is-a-dev/register` community infrastructure.
 - **Search Verification**: Integrated `google-site-verification` and synchronized Indonesian locale (`id_ID`) for local SEO dominance.
 - **DX Upgrade**: Local development environment enhanced with **PowerShell 7** for modern command chainining (`&&`).
 
