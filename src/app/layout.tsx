@@ -66,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="id">
       <head>
         {/* Preconnect hints — reduce third-party latency */}
         <link rel="preconnect" href="https://www.google-analytics.com" />
