@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Syifa Raditya Portfolio",
     images: [
       {
-        url: "/icon.png",
+        url: "/icon.svg",
         width: 512,
         height: 512,
       },
@@ -46,15 +46,15 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Syifa Raditya Pratama | Portfolio",
     description: "Building high-performance web applications and digital solutions.",
-    images: ["/icon.png"],
+    images: ["/icon.svg"],
   },
   robots: {
     index: true,
     follow: true,
   },
   icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
+    icon: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
