@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
@@ -58,13 +59,18 @@ export default function Preloader() {
               className="mb-12"
             >
               <div className="w-24 h-24 md:w-28 md:h-28 border-2 border-white/20 rounded-2xl flex items-center justify-center relative bg-white/5">
-                <motion.span 
-                  className="text-2xl md:text-3xl font-black text-white tracking-widest ml-1"
-                  animate={{ opacity: [0.8, 1, 0.8] }}
+                <motion.div
+                  animate={{ opacity: [0.8, 1, 0.8], scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative z-10"
                 >
-                  SRP
-                </motion.span>
+                  <Image 
+                    src="/icon.svg" 
+                    alt="SRP Mascot" 
+                    width={60} 
+                    height={60} 
+                  />
+                </motion.div>
                 
                 {/* Dual Rotating Borders */}
                 <motion.div 

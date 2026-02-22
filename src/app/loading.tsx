@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export default function Loading() {
   return (
@@ -17,13 +18,18 @@ export default function Loading() {
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <motion.span 
-            className="text-lg font-bold text-white tracking-widest"
+          <motion.div
             animate={{ opacity: [0.8, 1, 0.8] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="relative z-10"
           >
-            SRP
-          </motion.span>
+            <Image 
+              src="/icon.svg" 
+              alt="SRP Mascot" 
+              width={40} 
+              height={40} 
+            />
+          </motion.div>
           
           {/* Multiple Rotating Borders */}
           <motion.div 
