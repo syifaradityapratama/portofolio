@@ -8,6 +8,7 @@ import { smoothScrollTo } from "@/lib/utils";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { useScrollReveal } from "@/context/ScrollRevealContext";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -161,7 +162,13 @@ export default function Navbar() {
             >
               {/* Logo Box */}
               <div className="w-12 h-12 border border-white/20 rounded-xl flex items-center justify-center relative bg-white/5 overflow-hidden group-hover:border-white/40 group-hover:bg-white/10 transition-all duration-300">
-                <span className="text-sm font-bold text-white tracking-widest group-hover:text-zinc-300 transition-colors duration-300">SRP</span>
+                <Image 
+                  src="/icon.svg" 
+                  alt="SRP Logo" 
+                  width={28} 
+                  height={28} 
+                  className="relative z-10 transition-transform duration-300 group-hover:scale-110"
+                />
                 
                 {/* Rotating border animation */}
                 <motion.div 
