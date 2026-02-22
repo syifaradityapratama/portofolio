@@ -2,7 +2,7 @@
 
 A high-performance personal portfolio built with **Next.js 16**, **React 19**, and **Sanity CMS**. Designed with a focus on architectural clarity, responsive design, and measurable performance optimization.
 
-> **Live:** [syifaraditya.com](https://syifaraditya.com) · **CMS:** Sanity Studio (embedded at `/studio`)
+> **Live:** [radityaportofolio.is-a.dev](https://radityaportofolio.is-a.dev) · **CMS:** Sanity Studio (embedded at `/studio`)
 
 ---
 
@@ -66,6 +66,14 @@ Slug normalization handles edge cases (e.g., `Next.js` → `nextdotjs`, `C++` �
 ### Contact System
 
 Serverless API route (`/api/contact`) persists messages to Sanity and sends HTML email notifications via Resend. Recipient address is fetched from the CMS at runtime — never exposed in client-side code. Includes WhatsApp deep-link integration.
+
+### Dynamic SEO & Professional Branding (2026 Update)
+
+To achieve a "wow" factor during link sharing, the social metadata system was upgraded from static assets to dynamic profiles.
+
+- **Dynamic OG Image**: The social sharing preview (`og:image`) now dynamically pulls the **Hero Section photo** from Sanity. If no photo is present, it falls back to the high-resolution brand icon.
+- **SVG Transition**: Switched from PNG favicons to `icon.svg` for infinite scalability and crystal-clear presentation on high-DPI displays (MacBooks, Retina iPhones).
+- **Domain Migration**: Successfully migrated to the `radityaportofolio.is-a.dev` domain via the `is-a-dev/register` community infrastructure.
 
 ### Sanity Studio Extensions
 

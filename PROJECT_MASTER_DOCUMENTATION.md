@@ -255,7 +255,8 @@ Strategi optimasi mesin pencari dan struktur teknis untuk visibilitas maksimal.
 
 - **Dynamic Metadata 🏷️**:
   - **Implementation**: Menggunakan API `generateMetadata()` di `layout.tsx` dan `page.tsx` untuk menyuntikkan _meta tags_ (Title, Description, OpenGraph) secara otomatis berdasarkan konten halaman.
-  - **Base URL**: Dikonfigurasi dengan `metadataBase: new URL(...)` untuk memastikan semua link aset sosial media valid saat dibagikan.
+  - **Base URL**: Dikonfigurasi dengan `metadataBase: new URL("https://radityaportofolio.is-a.dev")` untuk memastikan semua link aset sosial media valid saat dibagikan.
+  - **Dynamic Social Proof**: Sistem metadata Open Graph sekarang secara dinamis mengambil **foto Hero Section** dari Sanity sebagai gambar preview saat link dibagikan.
 
 - **Automated Sitemap (Sitemap Otomatis) 🗺️**:
   - **Function**: File `sitemap.ts` secara dinamis mengambil seluruh _slug_ proyek dari Sanity CMS dan membuat file XML yang valid untuk Google Search Console.
@@ -633,6 +634,18 @@ _(Source: Preserved Project History)_
 - [x] TypeScript Fixes — `ease` tuple typing, `Contact.tsx` `whileInView` fix
 - [x] Build Verification — `tsc --noEmit` exit code 0
 
+## Phase 11: Dynamic Branding & Professional SEO (Feb 2026) 🚀
+
+- [x] **SVG Branding**:
+  - Migrasi dari PNG/ICO ke `icon.svg` untuk favicon yang tajam di semua resolusi tinggi.
+  - Pembersihan aset lama (`icon.png`, `favicon.ico`) untuk menjaga kebersihan arsitektur folder `public`.
+- [x] **Social Strategy**:
+  - Implementasi logic gambar dinamis pada `generateMetadata`.
+  - Preview sharing (WA/Telegram/FB) sekarang otomatis menampilkan foto asli dari Hero Section (Sanity).
+- [x] **Domain Connectivity**:
+  - Migrasi domain utama ke `radityaportofolio.is-a.dev`.
+  - Konfigurasi DNS CNAME ke Vercel via PR di repository `is-a-dev/register`.
+
 ## Verification Status
 
 - [x] Desktop Visual Audit
@@ -737,4 +750,11 @@ _(Source: Preserved Project History)_
   - `src/components/HeroClient.tsx` — Hapus dynamic import `AuroraEffect`, ganti dengan inline CSS gradient.
   - `src/app/globals.css` — Tambah `@keyframes aurora` (translate + scale, GPU-composited).
 
-## Status: 100% COMPLETE ✅ (Updated: 22 Februari 2026)
+## 🏆 Phase 27: Dynamic Social SEO & Premium Branding (Feb 2026)
+
+- [x] **Dynamic Metadata**: Integrasi foto Hero Section dari Sanity ke dalam Open Graph image.
+- [x] **Icon Modernization**: Implementasi `icon.svg` sebagai sumber tunggal untuk favicon dan brand assets.
+- [x] **Domain Setup**: Pendaftaran dan penghubungan domain `radityaportofolio.is-a.dev` ke infrastruktur Vercel.
+- [x] **Metadata Cleanup**: Penghapusan keyword "Magang" dan sinkronisasi total antara `layout.tsx` dan `page.tsx`.
+
+## Status: 100% COMPLETE ✅ (Updated: 23 Februari 2026)
