@@ -56,6 +56,9 @@ export const metadata: Metadata = {
     icon: "/icon.svg",
     apple: "/icon.svg",
   },
+  verification: {
+    google: "cWlpAuX4rBkGVRV1QhKWvGiDDQ9c8zhvrH11SHZGe6E",
+  },
 };
 
 const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
