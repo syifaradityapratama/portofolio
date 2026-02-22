@@ -148,9 +148,10 @@ Strategi teknis untuk menjaga performa website tetap tinggi meski banyak animasi
   - **Font Optimization**: Menggunakan `next/font` untuk _self-hosting_ file font, menghilangkan pergeseran tata letak (_layout shift_) saat loading.
 
 - **Loading Architecture (Arsitektur Loading)**:
-  - **Preloader Logic**: Menampilkan intro logo "SRP" selama 3 detik. Menggunakan `framer-motion` dengan mode `wait` untuk transisi keluar yang mulus.
-  - **Exit Physics**: Efek "tirai naik" (_curtain reveal_) menggunakan kurva `[0.76, 0, 0.24, 1]` selama 1.1 detik.
+  - **Preloader Logic**: Menampilkan logo brand `icon.svg` selama 1.5 detik (luxury intro). Menggunakan `framer-motion` dengan mode `wait` untuk transisi keluar yang mulus.
+  - **Exit Physics**: Efek "tirai naik" (_curtain reveal_) menggunakan kurva `[0.76, 0, 0.24, 1]` selama 0.6 detik.
   - **Skeleton UI**: Komponen `Skeleton.tsx` menggunakan animasi _shimmer_ (`bg-zinc-800/80`) untuk memberikan persepsi _loading_ instan saat navigasi halaman.
+  - **Branded Loading**: Sinkronisasi logo `icon.svg` pada `loading.tsx` global dan portfolio untuk konsistensi identitas brand.
 
 ### 2.7 Organic Interaction Design (Experience Section) 🧬
 
@@ -257,6 +258,7 @@ Strategi optimasi mesin pencari dan struktur teknis untuk visibilitas maksimal.
   - **Implementation**: Menggunakan API `generateMetadata()` di `layout.tsx` dan `page.tsx` untuk menyuntikkan _meta tags_ (Title, Description, OpenGraph) secara otomatis berdasarkan konten halaman.
   - **Base URL**: Dikonfigurasi dengan `metadataBase: new URL("https://radityaportofolio.is-a.dev")` untuk memastikan semua link aset sosial media valid saat dibagikan.
   - **Dynamic Social Proof**: Sistem metadata Open Graph sekarang secara dinamis mengambil **foto Hero Section** dari Sanity sebagai gambar preview saat link dibagikan.
+  - **Locale & Verification**: Sinkronisasi locale ke `id_ID` dan penambahan `google-site-verification` untuk integritas Search Console.
 
 - **Automated Sitemap (Sitemap Otomatis) 🗺️**:
   - **Function**: File `sitemap.ts` secara dinamis mengambil seluruh _slug_ proyek dari Sanity CMS dan membuat file XML yang valid untuk Google Search Console.
@@ -757,4 +759,4 @@ _(Source: Preserved Project History)_
 - [x] **Domain Setup**: Pendaftaran dan penghubungan domain `radityaportofolio.is-a.dev` ke infrastruktur Vercel.
 - [x] **Metadata Cleanup**: Penghapusan keyword "Magang" dan sinkronisasi total antara `layout.tsx` dan `page.tsx`.
 
-## Status: 100% COMPLETE ✅ (Updated: 23 Februari 2026)
+## Status: 100% COMPLETE ✅ (Updated: 23 Februari 2026 - Phase 12 Finishes)
