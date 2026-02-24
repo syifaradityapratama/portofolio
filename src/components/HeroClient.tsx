@@ -155,7 +155,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
                 
                 {/* Main image */}
                 <motion.div 
-                  className="relative h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96 overflow-hidden rounded-full border-2 border-zinc-700 bg-zinc-900/50 shadow-2xl shadow-blue-500/20"
+                  className="relative h-48 w-48 min-[340px]:h-64 min-[340px]:w-64 md:h-80 md:w-80 lg:h-96 lg:w-96 overflow-hidden rounded-full border-2 border-zinc-700 bg-zinc-900/50 shadow-2xl shadow-blue-500/20"
                   whileHover={{ scale: 1.02, borderColor: "rgba(59, 130, 246, 0.5)" }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -175,7 +175,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
 
           {/* RIGHT: Text + CTA */}
           <div 
-            className="text-center lg:text-left order-2 lg:order-2 space-y-3 min-[340px]:space-y-6 flex flex-col items-center lg:items-start"
+            className="text-center lg:text-left order-2 lg:order-2 space-y-2 min-[340px]:space-y-6 flex flex-col items-center lg:items-start"
           >
             {/* Availability Badge - animated, waits for reveal */}
             {profile.isAvailable && (
@@ -228,7 +228,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.5, delay: 0.1, ease: customEase }}
-              className="flex flex-col sm:flex-row items-center lg:items-start gap-4 pt-4"
+              className="flex flex-col sm:flex-row items-center lg:items-start gap-2 min-[340px]:gap-4 pt-2 min-[340px]:pt-4"
             >
               {profile.resumeUrl && (
                 <MagneticButton strength={0.2}>

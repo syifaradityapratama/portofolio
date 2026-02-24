@@ -146,7 +146,7 @@ export default function Navbar() {
         animate={{ y: hidden ? -100 : 0 }}
         transition={{ duration: 0.35, ease: "easeInOut" }}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4 flex items-center justify-between">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2 min-[340px]:py-4 flex items-center justify-between">
           {/* Logo with animated border */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
