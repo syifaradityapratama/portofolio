@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = profile?.fullName ? `${profile.fullName} | Portfolio` : 'Syifa Raditya Pratama | Portfolio';
   const description = profile?.headline || 'Building high-performance web applications and digital solutions.';
 
-  const ogImage = profile?.imageUrl || "/icon.svg";
+  const ogImage = profile?.imageUrl ? `${profile.imageUrl}?w=1200&h=630&fit=crop&q=80` : "/icon.svg";
 
   return {
     metadataBase: new URL("https://radityaportofolio.is-a.dev"),
