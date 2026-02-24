@@ -175,7 +175,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
 
           {/* RIGHT: Text + CTA */}
           <div 
-            className="text-center lg:text-left order-2 lg:order-2 space-y-4 min-[340px]:space-y-6 flex flex-col items-center lg:items-start"
+            className="text-center lg:text-left order-2 lg:order-2 space-y-3 min-[340px]:space-y-6 flex flex-col items-center lg:items-start"
           >
             {/* Availability Badge - animated, waits for reveal */}
             {profile.isAvailable && (
@@ -196,7 +196,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
             {/* === LCP CRITICAL ZONE — Renders immediately, no isRevealed gate === */}
             {/* Name with gradient animation */}
             {profile.fullName && (
-              <h1 className="text-3xl min-[340px]:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              <h1 className="text-2xl min-[340px]:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <motion.span
                   className="bg-clip-text text-transparent bg-size-[200%_100%]"
                   style={{
@@ -218,7 +218,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
             </h2>
 
             {/* Subheadline — immediately visible */}
-            <p className="text-lg text-zinc-400 max-w-xl">
+            <p className="text-sm min-[340px]:text-lg text-zinc-400 max-w-xl">
               {profile.subheadline || "Building digital products that solve real-world problems with code and strategy."}
             </p>
             {/* === END LCP CRITICAL ZONE === */}
@@ -268,7 +268,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
       </div>
 
       <motion.div 
-        className="absolute bottom-1 min-[340px]:bottom-2 sm:bottom-4 md:bottom-2 lg:bottom-4 left-1/2 -translate-x-1/2"
+        className="absolute bottom-px min-[340px]:bottom-2 sm:bottom-4 md:bottom-2 lg:bottom-4 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 0.6 }}
