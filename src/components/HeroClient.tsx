@@ -60,7 +60,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
   const isMobile = useIsMobile()
 
   return (
-    <section className="relative min-h-dvh flex items-center px-4 sm:px-6 lg:px-16 overflow-hidden">
+    <section className="relative min-h-dvh flex items-center px-4 sm:px-6 lg:px-16 pb-24 min-[340px]:pb-0 overflow-hidden">
       {/* Ambient Gradient — CSS-only replacement for AuroraEffect (zero JS cost) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
@@ -196,7 +196,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
             {/* === LCP CRITICAL ZONE — Renders immediately, no isRevealed gate === */}
             {/* Name with gradient animation */}
             {profile.fullName && (
-              <h1 className="text-2xl min-[340px]:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              <h1 className="text-xl min-[340px]:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <motion.span
                   className="bg-clip-text text-transparent bg-size-[200%_100%]"
                   style={{
