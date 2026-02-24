@@ -106,8 +106,8 @@ export default function Contact({ whatsapp, github, linkedin, email }: ContactPr
       </div>
       
       {/* Ambient Background */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-900/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-900/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full max-w-[500px] h-full max-h-[500px] bg-blue-900/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-full max-w-[400px] h-full max-h-[400px] bg-purple-900/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
@@ -124,7 +124,7 @@ export default function Contact({ whatsapp, github, linkedin, email }: ContactPr
             <motion.div variants={itemVariants} className="space-y-4">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
                 {CONTACT_HEADLINE}{' '}
-                <span className="relative inline-block min-w-[280px] h-[1.2em] align-bottom">
+                <span className="relative inline-block min-w-[150px] min-[340px]:min-w-[280px] h-[1.2em] align-bottom">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={currentWord}

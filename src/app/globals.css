@@ -26,8 +26,12 @@
   body {
     font-family: var(--font-sans);
     /* Pastikan background & text color default juga ada di sini */
-    @apply bg-black text-white antialiased;
+    @apply bg-black text-white antialiased overflow-x-hidden max-w-full;
     cursor: none; /* Fallback */
+  }
+
+  html {
+    @apply overflow-x-hidden max-w-full;
   }
 
   /* Force hide native cursor on all interactive elements if custom cursor is active */
@@ -57,9 +61,16 @@
   }
 
   @keyframes aurora {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33%      { transform: translate(5%, 3%) scale(1.05); }
-    66%      { transform: translate(-5%, -2%) scale(0.97); }
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(5%, 3%) scale(1.05);
+    }
+    66% {
+      transform: translate(-5%, -2%) scale(0.97);
+    }
   }
 }
 /* GOD MODE: FILM GRAIN */
@@ -86,26 +97,48 @@
 
 /* Border glow: cycles through colors */
 @keyframes border-glow-shift {
-  0%, 100% { border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 0 12px rgba(6, 182, 212, 0.15); }
-  33%      { border-color: rgba(168, 85, 247, 0.4); box-shadow: 0 0 12px rgba(168, 85, 247, 0.15); }
-  66%      { border-color: rgba(59, 130, 246, 0.4); box-shadow: 0 0 12px rgba(59, 130, 246, 0.15); }
+  0%,
+  100% {
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.15);
+  }
+  33% {
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.15);
+  }
+  66% {
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
+  }
 }
 
 /* Breathe: subtle scale pulse */
 @keyframes circle-breathe {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.06); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
 }
 
 /* Logo pulse: brightness heartbeat */
 @keyframes logo-pulse {
-  0%, 100% { filter: brightness(0.5) grayscale(0.3); }
-  50%      { filter: brightness(1.1) grayscale(0); }
+  0%,
+  100% {
+    filter: brightness(0.5) grayscale(0.3);
+  }
+  50% {
+    filter: brightness(1.1) grayscale(0);
+  }
 }
 
 /* ── Always-on Marquee Circle Animations ── */
 .skill-circle {
-  animation: border-glow-shift 4s ease-in-out infinite, circle-breathe 3s ease-in-out infinite;
+  animation:
+    border-glow-shift 4s ease-in-out infinite,
+    circle-breathe 3s ease-in-out infinite;
 }
 
 .skill-circle img,
