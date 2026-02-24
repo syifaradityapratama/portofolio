@@ -60,7 +60,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
   const isMobile = useIsMobile()
 
   return (
-    <section className="relative min-h-dvh flex items-center px-6 lg:px-16 overflow-hidden">
+    <section className="relative min-h-dvh flex items-center px-4 sm:px-6 lg:px-16 overflow-hidden">
       {/* Ambient Gradient — CSS-only replacement for AuroraEffect (zero JS cost) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
@@ -175,7 +175,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
 
           {/* RIGHT: Text + CTA */}
           <div 
-            className="text-center lg:text-left order-2 lg:order-2 space-y-6 flex flex-col items-center lg:items-start"
+            className="text-center lg:text-left order-2 lg:order-2 space-y-4 min-[340px]:space-y-6 flex flex-col items-center lg:items-start"
           >
             {/* Availability Badge - animated, waits for reveal */}
             {profile.isAvailable && (
@@ -196,7 +196,7 @@ export default function HeroClient({ profile }: HeroClientProps) {
             {/* === LCP CRITICAL ZONE — Renders immediately, no isRevealed gate === */}
             {/* Name with gradient animation */}
             {profile.fullName && (
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              <h1 className="text-3xl min-[340px]:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <motion.span
                   className="bg-clip-text text-transparent bg-size-[200%_100%]"
                   style={{
@@ -267,9 +267,8 @@ export default function HeroClient({ profile }: HeroClientProps) {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div 
-        className="absolute bottom-2 sm:bottom-4 md:bottom-2 lg:bottom-4 left-1/2 -translate-x-1/2"
+        className="absolute bottom-1 min-[340px]:bottom-2 sm:bottom-4 md:bottom-2 lg:bottom-4 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 0.6 }}
@@ -279,8 +278,8 @@ export default function HeroClient({ profile }: HeroClientProps) {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" as const }}
           className="flex flex-col items-center gap-1 sm:gap-2 text-zinc-500"
         >
-          <span className="text-[10px] sm:text-xs uppercase tracking-widest">Scroll</span>
-          <div className="w-px h-5 sm:h-8 bg-linear-to-b from-zinc-500 to-transparent" />
+          <span className="text-[8px] min-[340px]:text-[10px] sm:text-xs uppercase tracking-widest">Scroll</span>
+          <div className="w-px h-4 sm:h-8 bg-linear-to-b from-zinc-500 to-transparent" />
         </motion.div>
       </motion.div>
     </section>
