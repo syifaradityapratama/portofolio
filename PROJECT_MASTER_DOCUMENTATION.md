@@ -120,7 +120,11 @@ Pendekatan desain yang memprioritaskan pengalaman pengguna di perangkat seluler 
   - **Safe Zones**: Margin kiri-kanan (`px-4` atau `px-6`) memastikan konten tidak terpotong di layar HP yang memiliki _notch_ atau sudut melengkung.
 
 - **Adaptive Typography (Tipografi Adaptif)**:
-  - Menggunakan skala font dinamis (`text-3xl md:text-5xl`) agar judul terbaca jelas di HP tanpa memakan seluruh layar, namun tetap megah di Desktop.
+  - Menggunakan skala font dinamis (`text-3xl md:text-5xl`) agar judul terbaca jelas di HP tanpa memakan seluruh layar. Khusus untuk layar ultra-sempit (< 340px), font dikecilkan secara agresif (`text-xl`) untuk mencegah layout berantakan.
+
+- **Extreme Narrow Viewport Optimization (Mobile-First 2.0)**:
+  - **Horizontal Lock**: Implementasi `overflow-x: hidden` secara global pada `html` dan `body` di `globals.css`. Ini menjamin tidak ada "space kosong" di pinggir karena elemen dekoratif yang bocor.
+  - **Responsive Decorative Elements**: Refactoring elemen background (glow/aurora) dari lebar statis (600px) menjadi fleksibel (`w-full max-w-[600px]`), memastikan stabilitas visual hingga lebar 218px.
 
 **Verification Proof (iPhone 12 Viewport):**
 
@@ -247,6 +251,9 @@ Penyesuaian layout khusus untuk memastikan pengalaman optimal di setiap ukuran l
 - **Tablet Optimizations**:
   - **Hero Bio Centering**: Menggunakan `flex flex-col items-center lg:items-start` untuk memastikan konten terpusat di tablet namun rata kiri di desktop.
   - **Breakpoint-Specific Spacing**: Scroll indicator menggunakan `md:bottom-2` khusus untuk tablet, terpisah dari breakpoint mobile dan desktop.
+
+- **Ultra-Small Screen Refinements (218px - 320px)**:
+  - **CTA Decoupling**: Indikator "Scroll" menggunakan ukuran font mikro (`text-[8px]`) dan padding bawah tambahan (`pb-24`) di Hero section untuk memastikan tidak bertabrakan dengan tombol utama pada layar pendek (iPhone SE).
 
 ## 3. Technical Architecture & Deployment 🏗️
 

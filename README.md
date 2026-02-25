@@ -77,6 +77,14 @@ To achieve a "wow" factor during link sharing, the social metadata system was up
 - **Search Verification**: Integrated `google-site-verification` and synchronized Indonesian locale (`id_ID`) for local SEO dominance.
 - **DX Upgrade**: Local development environment enhanced with **PowerShell 7** for modern command chainining (`&&`).
 
+### Extreme Mobile Optimization (Mobile-First 2.0)
+
+To ensure the portfolio is future-proof and accessible on any device, we implemented a rigorous layout audit for ultra-narrow viewports (down to 218px).
+
+- **Global Layout Lock**: Secured the entire viewport using `overflow-x: hidden` and `max-width: 100%` on both `html` and `body`. This prevents horizontal scrolling issues caused by bleeding absolute elements or background glows.
+- **Responsive Deco Refactor**: Refactored fixed-width background glows (formerly `w-[600px]`) into responsive containers (`max-w-[600px] w-full`), eliminating side-gaps on mobile.
+- **Micro-Typography**: Aggressive font scaling (`text-xl` for name headers) and micro-interactions (reduced scroll indicator font) for viewports < 340px.
+
 ### Sanity Studio Extensions
 
 A custom Studio Tool provides batch deletion of contact messages using `client.transaction()` with confirmation dialogs and toast feedback. The Studio is embedded at `/studio` with Basic Auth protection in production.
