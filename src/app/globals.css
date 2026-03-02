@@ -60,18 +60,6 @@
     animation: shimmer 2.5s infinite linear;
   }
 
-  @keyframes aurora {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-    33% {
-      transform: translate(5%, 3%) scale(1.05);
-    }
-    66% {
-      transform: translate(-5%, -2%) scale(0.97);
-    }
-  }
 }
 /* GOD MODE: FILM GRAIN */
 .noise-overlay {

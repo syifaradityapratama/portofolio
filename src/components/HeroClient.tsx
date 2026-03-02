@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useReducedMotion, type Transition } from 'framer-motion'
+import { motion, type Transition } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -13,7 +13,7 @@ import { useIsMobile } from '@/hooks/useIsMobile'
 // Dynamic imports — eliminates heavy animation JS from initial bundle
 const AnimatedGrid = dynamic(() => import('./AnimatedGrid'), { ssr: false, loading: () => null })
 const FloatingElements = dynamic(() => import('./FloatingElements'), { ssr: false, loading: () => null })
-const ParticleField = dynamic(() => import('./ParticleField'), { ssr: false, loading: () => null })
+
 
 interface HeroClientProps {
   profile: {
@@ -56,29 +56,11 @@ const ringVariants = {
 export default function HeroClient({ profile }: HeroClientProps) {
   const imageContainerRef = useRef<HTMLDivElement>(null)
   const { isRevealed } = useScrollReveal()
-  const prefersReducedMotion = useReducedMotion()
   const isMobile = useIsMobile()
 
   return (
     <section className="relative min-h-dvh flex items-center px-4 sm:px-6 lg:px-16 pb-24 min-[340px]:pb-0 overflow-hidden">
-      {/* Ambient Gradient — CSS-only replacement for AuroraEffect (zero JS cost) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute -inset-x-1/2 -top-1/4 h-[70%] rounded-[100%] opacity-20 animate-[aurora_20s_ease-in-out_infinite]"
-          style={{
-            background: 'radial-gradient(ellipse at center, rgba(56,189,248,0.15) 0%, rgba(59,130,246,0.08) 40%, rgba(139,92,246,0.05) 70%, transparent 100%)',
-          }}
-        />
-        <div
-          className="absolute -inset-x-1/4 top-[10%] h-[50%] rounded-[100%] opacity-15 animate-[aurora_25s_ease-in-out_infinite_reverse]"
-          style={{
-            background: 'radial-gradient(ellipse at center, rgba(139,92,246,0.12) 0%, rgba(168,85,247,0.06) 50%, transparent 100%)',
-          }}
-        />
-      </div>
       
-      {/* Particle Field - Stars (desktop only, disabled for reduced motion) */}
-      {!isMobile && !prefersReducedMotion && <ParticleField count={20} />}
       
       {/* Animated Grid Background (desktop only) */}
       {!isMobile && <AnimatedGrid />}
