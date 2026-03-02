@@ -124,7 +124,7 @@ Pendekatan desain yang memprioritaskan pengalaman pengguna di perangkat seluler 
 
 - **Extreme Narrow Viewport Optimization (Mobile-First 2.0)**:
   - **Horizontal Lock**: Implementasi `overflow-x: hidden` secara global pada `html` dan `body` di `globals.css`. Ini menjamin tidak ada "space kosong" di pinggir karena elemen dekoratif yang bocor.
-  - **Responsive Decorative Elements**: Refactoring elemen background (glow/aurora) dari lebar statis (600px) menjadi fleksibel (`w-full max-w-[600px]`), memastikan stabilitas visual hingga lebar 218px.
+  - **UIs Cleanup (Removal)**: Penghapusan elemen Aurora dan Particle Field untuk tampilan yang lebih bersih dan beban rendering (GPU/CPU) yang lebih ringan.
 
 **Verification Proof (iPhone 12 Viewport):**
 
